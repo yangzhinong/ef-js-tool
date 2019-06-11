@@ -164,7 +164,7 @@ public enum {{code}} {
                     tmp.type = 'float?' 
                     if(d.required){
                       tmp.type = 'float'
-                    } 
+                    }
                 } else if (d.type === 'double') {
                     tmp.type = 'double?' 
                     if(d.required){
@@ -193,7 +193,15 @@ public enum {{code}} {
                     tmp.type = 'Guid'                    
                   }
                 }
-              
+                if (tmp.code == "AbandonerId"){
+                  tmp.type = 'Guid?'
+                }
+                if (tmp.code == 'RowVersion'){
+                  tmp.type = 'byte[]'
+                }
+                if (/(float)|(double)/.test(tmp.type)){
+                  tmp.type='decimal' + (tmp.required ? "":"?")
+                }
                 return tmp
             }),
         }

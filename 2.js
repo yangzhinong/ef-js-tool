@@ -31,7 +31,12 @@ Handlebars.registerHelper('swaggerType', function(item) {
 var backend_entity_template = `
 public class {{code}} {
     {{#data}}
-    public {{type}} {{code}} {get;set;}
+    {{#if isCode}}
+      private string _code = "";
+      public string Code { get => _code; set => _code = value?.ToUpper(); }
+    {{else}}
+      public {{type}} {{code}} {get;set;}
+    {{/if}}
     {{/data}}
 }
 `
@@ -60,18 +65,26 @@ public class {{code}} {
                     if (/^id$/.test(o.code)) o.type="Guid?";
                     if (/time/i.test(o.code)) o.type="DateTime?";
                     if (/(status|type)$/i.test(o.code)) o.type= "*"+o.type; //很可能是枚举，得修改所以故意出错
+                    if (o.code == "Code"){
+                      o.isCode=true;
+                    }
                     lst.data.push(o);
                 }
+               
             });
             console.dir("lst=",lst);
             var backendCode = Handlebars.compile(backend_entity_template)(lst)
             GM_setClipboard(backendCode)
         }
         var btn2 = document.createElement('button')
-        btn2.innerText = '复制查询参数对象'
+        btn2.innerText = '复制查询参数对象CodeUpCase'
         btn2.onclick = function() {
             getdata()
         } 
         $('div.scheme-container').before(btn2);       
     },500);
 })();
+
+
+
+
