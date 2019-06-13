@@ -17,7 +17,8 @@
   },
   "homepage": "https://github.com/yangzhinong/ef-js-tool#readme",
   "devDependencies": {
-    "typescript": "^3.5.1"
+    "typescript": "^3.5.1",
+    "typings": "^2.1.1"
   },
   "dependencies": {
     "jquery": "^3.4.1"

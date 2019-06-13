@@ -245,7 +245,8 @@ public enum {{code}} {
             btn2.onclick = function() {
                 var enumInfo = getEnumInfo()
                 var backendCode = Handlebars.compile(backendTemplate)(enumInfo)
-                GM_setClipboard(backendCode)
+                GM_setClipboard(backendCode);
+                
             }          
             $(this).before(btn2)
         })
