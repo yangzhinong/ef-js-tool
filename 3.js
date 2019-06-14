@@ -75,6 +75,12 @@ var backend_entity_template = "\npublic class {{code}} {\n    {{#data}}\n    {{#
         btn2.onclick = function () {
             getdata();
         };
-        $('div.scheme-container').before(btn2);
+        var $divContainer = $('div.scheme-container');
+        $divContainer.before(btn2);
+        var $select = $("<select><option>== please select one ==</option></select>");
+        $divContainer.before($select);
+        //@ts-ignore
+        var text = window.clipboardData.getData("Text");
+        alert(text);
     }, 500);
 })();

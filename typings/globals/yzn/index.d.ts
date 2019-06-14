@@ -3,3 +3,4 @@ declare var Handlebars:{
     registerHelper:any
 };
 declare var GM_setClipboard:(s:string)=>void;
+declare var GM_log:(message:any)=>void;

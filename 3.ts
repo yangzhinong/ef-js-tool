@@ -42,6 +42,7 @@ public class {{code}} {
 `
 ;(function() {
     // 实体
+  
     setTimeout(function(){
         function toUpcaseFirstChar(str:string){
             return `${str.slice(0, 1).toUpperCase()}${str.slice(1)}`
@@ -71,7 +72,6 @@ public class {{code}} {
                     }
                     lst.data.push(o);
                 }
-               
             });
             console.dir("lst=",lst);
             var backendCode = Handlebars.compile(backend_entity_template)(lst)
@@ -82,7 +82,15 @@ public class {{code}} {
         btn2.onclick = function() {
             getdata()
         } 
-        $('div.scheme-container').before(btn2);       
+        let $divContainer=$('div.scheme-container');
+        $divContainer.before(btn2); 
+        var $select=$(`<select><option>== please select one ==</option></select>`);
+        $divContainer.before($select);
+        
+        //@ts-ignore
+        var text = window.clipboardData.getData("Text");
+	alert(text);
+
     },500);
 })();
 

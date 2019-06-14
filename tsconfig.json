@@ -61,7 +61,8 @@
     // "emitDecoratorMetadata": true,         /* Enables experimental support for emitting type metadata for decorators. */
   },
   "files": [
-    "3.ts"
+    "3.ts",
+    "api.ts"
   ],
   "include": [
     "typings/index.d.ts"
