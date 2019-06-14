@@ -10,7 +10,7 @@
 // @inject-into content
 // ==/UserScript==
 Handlebars.registerHelper('toCamelCase', function (str) {
-    return "" + str.slice(0, 1).toLowerCase() + str.slice(1);
+    return `${str.slice(0, 1).toLowerCase()}${str.slice(1)}`;
 });
 Handlebars.registerHelper('swaggerType', function (item) {
     var type = item.type;
@@ -20,18 +20,29 @@ Handlebars.registerHelper('swaggerType', function (item) {
         }
         case 'money':
         case 'number': {
-            return "number";
+            return `number`;
         }
         default:
             return 'type: string';
     }
 });
-var backend_entity_template = "\npublic class {{code}} {\n    {{#data}}\n    {{#if isCode}}\n      private string _code = \"\";\n      public string Code { get => _code; set => _code = value?.ToUpper(); }\n    {{else}}\n      public {{type}} {{code}} {get;set;}\n    {{/if}}\n    {{/data}}\n}\n";
+var backend_entity_template = `
+public class {{code}} {
+    {{#data}}
+    {{#if isCode}}
+      private string _code = "";
+      public string Code { get => _code; set => _code = value?.ToUpper(); }
+    {{else}}
+      public {{type}} {{code}} {get;set;}
+    {{/if}}
+    {{/data}}
+}
+`;
 (function () {
     // 实体
     setTimeout(function () {
         function toUpcaseFirstChar(str) {
-            return "" + str.slice(0, 1).toUpperCase() + str.slice(1);
+            return `${str.slice(0, 1).toUpperCase()}${str.slice(1)}`;
         }
         function getdata() {
             var lst = { code: '', data: [] };
@@ -75,9 +86,9 @@ var backend_entity_template = "\npublic class {{code}} {\n    {{#data}}\n    {{#
         btn2.onclick = function () {
             getdata();
         };
-        var $divContainer = $('div.scheme-container');
+        let $divContainer = $('div.scheme-container');
         $divContainer.before(btn2);
-        var $select = $("<select><option>== please select one ==</option></select>");
+        var $select = $(`<select><option>== please select one ==</option></select>`);
         $divContainer.before($select);
         //@ts-ignore
         var text = window.clipboardData.getData("Text");

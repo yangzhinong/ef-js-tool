@@ -72,14 +72,13 @@ public class {{code}} {
         if ($th.length>0){
 
             let re=/[\(（](\w+)[)）]/;
-            /\(w+\)/.exec($('#firstHeading').text());
             let entityInfo = {
                 name: trimCrlf($('#firstHeading').text()),
                 code: 'ApiSaptDto',
                 data: [],
             }
             if (entityInfo.name.match(re)){
-                entityInfo.code= `ApiSap${entityInfo.code}DtO`;
+                entityInfo.code= `Api${entityInfo.name.match(re)[1]}DtO`;
             }
             let $row=$th.next();
             var lstDistinctCode=[] as string[];
