@@ -135,7 +135,7 @@ public class {{code}} {
                     item.code2 =  trimCrlf(tds.eq(6).text());
                    
                 }
-                item.name += `  ${item.code} -> ${item.code2}`;
+                item.name += `  ${item.code} -- ${item.code2}`;
                 {
                     //检查字段名段重复
                     let upCode= item.code.toUpperCase();
