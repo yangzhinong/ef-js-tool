@@ -62,7 +62,8 @@
   },
   "files": [
     "3.ts",
-    "api.ts"
+    "api.1.remark.ts",
+    "api.2.remark.ts"
   ],
   "include": [
     "typings/index.d.ts"
