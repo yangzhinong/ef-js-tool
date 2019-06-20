@@ -39,7 +39,9 @@ using Abp.Domain.Entities;
 [Table("{{code}}")]
 public class {{code}} : Entity<Guid> {
     {{#data}}
-    //{{name}} 
+    /// <summary>
+    /// {{name}}
+    /// </summary>
     {{#if IsRequiredString}}   
     [Required]   
     {{/if}}  
@@ -47,7 +49,6 @@ public class {{code}} : Entity<Guid> {
     [MaxLength(EntityDefault.FieldLength_{{length}})]
     {{/if}}
     public {{type}} {{code}} {get;set;}
-
     {{/data}}
 }
 `
@@ -225,7 +226,7 @@ public enum {{code}} {
             dataForEntity
         )
         var btn1 = document.createElement('button')
-        btn1.innerText = '复制实体对象'
+        btn1.innerText = '复制实体对象(注释提示)'
         btn1.onclick = function() {
             GM_setClipboard(code)
         }
