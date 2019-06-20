@@ -150,7 +150,7 @@ public class {{code}} {
     
             var code = Handlebars.compile(backend_entity_template)(entityInfo );
             var btn1 = document.createElement('button')
-            btn1.innerText = '复制inteface实体对象'
+            btn1.innerText = '复制inteface实体对象2Remark'
             btn1.onclick = function() {
                 GM_setClipboard(code)
             }
