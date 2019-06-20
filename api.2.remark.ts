@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name 设计文档接口转换
+// @name 设计文档接口转换2Remark
 // @description 根据设计文档生成前后端实体或枚举值
 // @version 0.0.1
 // @namespace https://wiki.sdtdev.net/
